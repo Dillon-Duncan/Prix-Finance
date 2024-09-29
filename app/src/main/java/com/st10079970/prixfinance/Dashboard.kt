@@ -2,18 +2,17 @@ package com.st10079970.prixfinance
 
 import android.content.Intent
 import android.content.res.Configuration
+import android.graphics.Color
 import android.os.Bundle
-import android.view.Gravity
 import android.view.MenuItem
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.navigation.NavigationView
 
@@ -23,32 +22,52 @@ class Dashboard : AppCompatActivity() {
     private lateinit var drwLayout: DrawerLayout
     private lateinit var navView: NavigationView
     private lateinit var recView: RecyclerView
+    private lateinit var adapter: CardAdapter
+    private lateinit var tempData: List<CardItems>
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_dashboard)
 
+        // Setting up the layout manager
+        val layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false)
+
+        //  Setting up Recycler Display + Linking the layoutManager
+        recView = findViewById(R.id.recViewBudgetDisplay)
+        recView.layoutManager = layoutManager
+        recView.setHasFixedSize(true)
+
+
+        //getting userdata
+        tempData = arrayListOf()
+        getUserData()
+
         // Set up the toolbar
         val toolbar: Toolbar = findViewById(R.id.toolBarDashboard)
         setSupportActionBar(toolbar)
 
-        // Set up DrawerLayout and ActionBarDrawerToggle
+        // Setting up DrawerLayout and ActionBarDrawerToggle
+        drwLayout = findViewById(R.id.drwLayoutDashboard)
         setupDrawerLayout(toolbar)
 
-        // Set up NavigationView
+        // Setting up NavigationView
         navView = findViewById(R.id.navView_dashboard)
         setupNavigationView()
 
-        // Set up Recycler Display
-        recView = findViewById(R.id.recViewBudgetDisplay)
-        recView.layoutManager = LinearLayoutManager(this)
-        recView.setHasFixedSize(true)
+        // Setting up custom overlap display
+        recView.addItemDecoration(CardOverlapDecoration())
+
+
+        // Adjust card elevation and background
+        recView.setBackgroundColor(Color.TRANSPARENT)
+
+
     }
 
     //setting up the display and configuration of toolbar
     private fun setupDrawerLayout(toolbar: Toolbar) {
-        drwLayout = findViewById(R.id.drwLayoutDashboard)
         toggle =  ActionBarDrawerToggle(this, drwLayout, toolbar, R.string.tgl_open, R.string.tgl_close)
         drwLayout.addDrawerListener(toggle)
         toggle.syncState()
@@ -96,6 +115,21 @@ class Dashboard : AppCompatActivity() {
         }
     }
 
+    //setting up the temp userdata
+    fun getUserData(): List<CardItems> {
+        return listOf(
+            CardItems("Groceries", 221270.00, "Caution"),
+            CardItems("Rent", 131270.00, "On Track"),
+            CardItems("Entertainment", 110396.00, "Caution"),
+            CardItems("Transportation", 230902.00, "On Track"),
+            CardItems("Utilities", 100210.00, "Caution"),
+            CardItems("Savings", 241212.00, "On Track"),
+            CardItems("Healthcare", 290522.00, "Caution"),
+            CardItems("Clothing", 120804.00, "On Track")
+        )
+
+    }
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return if (toggle.onOptionsItemSelected(item)) true else super.onOptionsItemSelected(item)
     }
@@ -105,21 +139,4 @@ class Dashboard : AppCompatActivity() {
         toggle.onConfigurationChanged(newConfig)
     }
 
-    //count ought to equal the number of budgets there are
-    private fun setupBudgetsDisplay(){
-        recView = findViewById(R.id.recViewBudgetDisplay)
-
-
-        recView.removeAllViews()
-
-        //hardcoded counter, should be automatic
-        val itemCount = 3
-
-        for (i in 0 until itemCount){
-            OverlappingBudgetItemView(this).apply {
-                setFloater("Food", "On Track", 120804.00)
-                recView.addView(this)
-            }
-        }
-    }
 }

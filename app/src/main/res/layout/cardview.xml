@@ -1,19 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardFloater"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/bg_floatingitem"
+<androidx.cardview.widget.CardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/cardView"
+        app:cardElevation="5dp"
+        app:cardBackgroundColor="@color/bg_night"
+        app:cardCornerRadius="25dp"
        >
          <LinearLayout
              android:layout_width="match_parent"
              android:layout_height="match_parent"
-             android:background="@drawable/bg_floatingitem"
-             android:elevation="3dp"
              android:orientation="vertical">
             <TableRow
                 android:id="@+id/rowBudgetName"
@@ -22,7 +20,7 @@
                 android:layout_weight="3">
 
                 <TextView
-                    android:id="@+id/floaterBudgetName"
+                    android:id="@+id/cardName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textStyle="bold"
@@ -49,7 +47,7 @@
                      android:layout_marginStart="20dp"/>
 
                  <TextView
-                     android:id="@+id/floaterBudgetBalance"
+                     android:id="@+id/cardBalance"
                      android:layout_width="wrap_content"
                      android:layout_height="wrap_content"
                      android:textSize="15sp"
@@ -64,7 +62,7 @@
                  android:layout_height="match_parent"
                  android:layout_weight="3">
                  <TextView
-                     android:id="@+id/floaterBudgetStatus"
+                     android:id="@+id/cardStatus"
                      android:layout_width="wrap_content"
                      android:layout_height="wrap_content"
                      android:textStyle="bold"
@@ -87,5 +85,3 @@
          </LinearLayout>
 
     </androidx.cardview.widget.CardView>
-
-</FrameLayout>
