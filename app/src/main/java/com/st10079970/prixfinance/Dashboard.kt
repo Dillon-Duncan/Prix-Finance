@@ -29,24 +29,19 @@ class Dashboard : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_dashboard)
 
-        // Set up the toolbar
         val toolbar: Toolbar = findViewById(R.id.toolBarDashboard)
         setSupportActionBar(toolbar)
 
-        // Set up DrawerLayout and ActionBarDrawerToggle
         setupDrawerLayout(toolbar)
 
-        // Set up NavigationView
         navView = findViewById(R.id.navView_dashboard)
         setupNavigationView()
 
-        // Set up Recycler Display
         recView = findViewById(R.id.recViewBudgetDisplay)
         recView.layoutManager = LinearLayoutManager(this)
         recView.setHasFixedSize(true)
     }
 
-    //setting up the display and configuration of toolbar
     private fun setupDrawerLayout(toolbar: Toolbar) {
         drwLayout = findViewById(R.id.drwLayoutDashboard)
         toggle =  ActionBarDrawerToggle(this, drwLayout, toolbar, R.string.tgl_open, R.string.tgl_close)
@@ -54,7 +49,6 @@ class Dashboard : AppCompatActivity() {
         toggle.syncState()
     }
 
-    //routing the navigation to the correct layout
     private fun setupNavigationView() {
 
         navView.setNavigationItemSelectedListener {
@@ -105,14 +99,12 @@ class Dashboard : AppCompatActivity() {
         toggle.onConfigurationChanged(newConfig)
     }
 
-    //count ought to equal the number of budgets there are
     private fun setupBudgetsDisplay(){
         recView = findViewById(R.id.recViewBudgetDisplay)
 
 
         recView.removeAllViews()
 
-        //hardcoded counter, should be automatic
         val itemCount = 3
 
         for (i in 0 until itemCount){

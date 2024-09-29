@@ -14,16 +14,17 @@
         android:layout_marginTop="24dp"
         android:background="@drawable/edit_text_bg"
         android:hint="Email Address"
+        android:minHeight="48dp"
         android:paddingLeft="20dp"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
+        android:textColorHint="@color/light_blue"
+        android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/txtFullName"
-        app:layout_constraintWidth_percent=".8"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        android:textColorHint="@color/light_blue"/>
+        app:layout_constraintWidth_percent=".8" />
 
     <Button
         android:id="@+id/btnRegister"
@@ -48,16 +49,17 @@
         android:layout_marginTop="24dp"
         android:background="@drawable/edit_text_bg"
         android:hint="Confirm Password"
+        android:minHeight="48dp"
         android:paddingLeft="20dp"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
+        android:textColorHint="@color/light_blue"
+        android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/editText"
-        app:layout_constraintWidth_percent=".8"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        android:textColorHint="@color/light_blue"/>
+        app:layout_constraintWidth_percent=".8" />
 
     <EditText
         android:id="@+id/txtFullName"
@@ -66,16 +68,17 @@
         android:layout_marginTop="64dp"
         android:background="@drawable/edit_text_bg"
         android:hint="Full Name"
+        android:minHeight="48dp"
         android:paddingLeft="20dp"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
+        android:textColorHint="@color/light_blue"
+        android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintWidth_percent=".8"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        android:textColorHint="@color/light_blue"/>
+        app:layout_constraintWidth_percent=".8" />
 
     <EditText
         android:id="@+id/editText"
@@ -84,16 +87,17 @@
         android:layout_marginTop="24dp"
         android:background="@drawable/edit_text_bg"
         android:hint="Password"
+        android:minHeight="48dp"
         android:paddingLeft="20dp"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
+        android:textColorHint="@color/light_blue"
+        android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/txtEmail2"
-        app:layout_constraintWidth_percent=".8"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        android:textColorHint="@color/light_blue"/>
+        app:layout_constraintWidth_percent=".8" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

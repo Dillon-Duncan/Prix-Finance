@@ -33,14 +33,4 @@ class MainActivity : AppCompatActivity() {
         fragmentTransaction.replace(R.id.frame_layout, fragment)
         fragmentTransaction.commit()
     }
-
-    private fun incomeFragment(fragment: IncomeFragment) {
-        if (savedInstanceState == null) {
-            supportFragmentManager.beginTransaction()
-                .replace(R.id.fragment_container, IncomeFragment())
-                .commitNow()
-        }
-    }
-
-
 }
