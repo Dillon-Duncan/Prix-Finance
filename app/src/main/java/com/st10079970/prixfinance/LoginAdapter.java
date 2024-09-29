@@ -1,34 +1,38 @@
 package com.st10079970.prixfinance;
 
+import android.content.Context;
+
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
-import androidx.viewpager2.adapter.FragmentStateAdapter;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentStatePagerAdapter;
 
-public class LoginAdapter extends FragmentStateAdapter {
+public class LoginAdapter extends FragmentStatePagerAdapter {
 
-    private int totalTabs;
+    private Context context;
+    int totalTabs;
 
-    public LoginAdapter(@NonNull FragmentActivity fragmentActivity, int totalTabs) {
-        super(fragmentActivity);
+    public LoginAdapter(FragmentManager fm, Context context, int totalTabs) {
+        super(fm);
+        this.context = context;
         this.totalTabs = totalTabs;
     }
 
-    @NonNull
     @Override
-    public Fragment createFragment(int position) {
-        switch (position) {
-            case 0:
-                return new LoginTabFragment();
-            case 1:
-                return new RegisterTabFragment();
-            default:
-                return new Fragment();
-        }
+    public int getCount() {
+        return totalTabs;
     }
 
-    @Override
-    public int getItemCount() {
-        return totalTabs;
+    public Fragment getItem(int position){
+        switch (position){
+            case 0:
+                LoginTabFragment loginTabFragment = new LoginTabFragment();
+                return loginTabFragment;
+            case 1:
+                RegisterTabFragment registerTabFragment = new RegisterTabFragment();
+                return  registerTabFragment;
+            default:
+                return null;
+        }
     }
 }
