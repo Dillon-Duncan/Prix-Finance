@@ -5,7 +5,6 @@ import android.view.View
 import android.widget.FrameLayout
 import android.widget.TextView
 import androidx.cardview.widget.CardView
-import org.w3c.dom.Text
 
 class OverlappingBudgetItemView(context: Context): FrameLayout(context)
 {
@@ -18,7 +17,7 @@ class OverlappingBudgetItemView(context: Context): FrameLayout(context)
 
     init {
 
-        inflate(context, R.layout.floatingitem, this)
+        inflate(context, R.layout.card_item, this)
 
         floater = findViewById<CardView>(R.id.cardFloater)
         setBudgetName = findViewById<TextView>(R.id.floaterBudgetName)
