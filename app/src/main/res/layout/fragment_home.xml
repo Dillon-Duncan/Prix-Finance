@@ -175,7 +175,7 @@
                 android:id="@+id/recViewBudgetDisplay"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                tools:listitem="@layout/floatingitem"
+                tools:listitem="@layout/cardview"
                 >
             </androidx.recyclerview.widget.RecyclerView>
 
