@@ -2,7 +2,7 @@
 <androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/drwLayoutDashboard"
+    android:id="@+id/drwHomeFrag"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".HomeFragment"
@@ -15,7 +15,7 @@
 
         <!-- this is the toolbar -->
         <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolBarDashboard"
+            android:id="@+id/toolBarHomeFrag"
             android:layout_width="match_parent"
             android:layout_height="80dp"
             android:contentDescription="@string/txt_toolbarDesc"
@@ -168,13 +168,15 @@
             android:layout_marginTop="20dp"
             android:layout_marginStart="12dp"
             android:layout_marginEnd="12dp"
-            app:layout_constraintTop_toBottomOf="@id/lblBudgets">
+            android:layout_marginBottom="5dp"
+            app:layout_constraintTop_toBottomOf="@id/lblBudgets"
+            app:layout_constraintBottom_toBottomOf="parent" >
 
             <!-- this is the recycle view to display budgets box -->
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recViewBudgetDisplay"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="290dp"
                 tools:listitem="@layout/floatingitem"
                 >
             </androidx.recyclerview.widget.RecyclerView>
@@ -187,11 +189,10 @@
 
     <!-- this is the navigation view -->
     <com.google.android.material.navigation.NavigationView
-        android:id="@+id/navView_dashboard"
+        android:id="@+id/navHomeFrag"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="end"
-        android:fitsSystemWindows="true"
         app:menu="@menu/nav_menu">
 
     </com.google.android.material.navigation.NavigationView>
