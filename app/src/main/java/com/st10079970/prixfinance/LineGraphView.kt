@@ -13,8 +13,8 @@ class LineGraphView @JvmOverloads constructor(
     private val expenseColor = Color.parseColor("#D9E3E8")
     private val textColor = Color.parseColor("#262B2B")
 
-    var incomeData: List<Int> = emptyList()
-    var expenseData: List<Int> = emptyList()
+    private val incomeData = listOf(1000, 3000, 5000, 7000, 9000)
+    private val expenseData = listOf(500, 1500, 4000, 6000, 8500)
 
     private val paintLine = Paint().apply {
         style = Paint.Style.STROKE
@@ -35,10 +35,7 @@ class LineGraphView @JvmOverloads constructor(
         super.onDraw(canvas)
         canvas ?: return
 
-        if (incomeData.isEmpty() || expenseData.isEmpty()) {
-            return
-        }
-
+        // Define margins and graph area
         val padding = 100f
         val width = width.toFloat() - padding * 2
         val height = height.toFloat() - padding * 2
@@ -55,7 +52,8 @@ class LineGraphView @JvmOverloads constructor(
 
     private fun drawAxes(canvas: Canvas, padding: Float, width: Float, height: Float) {
         paintLine.color = textColor
-        canvas.drawLine(padding, height + padding, width + padding, height + padding, paintLine)
+        canvas.drawLine(padding, height + padding, width + padding, height + padding, paintLine) // x axis
+        canvas.drawLine(padding, padding, padding, height + padding, paintLine) // y axis
     }
 
     private fun drawLineGraph(canvas: Canvas, data: List<Int>, color: Int, padding: Float, width: Float, height: Float) {
@@ -65,7 +63,6 @@ class LineGraphView @JvmOverloads constructor(
         val scaleX = width / (data.size - 1).toFloat()
         val scaleY = height / maxY
 
-        // Draw the line graph
         for (i in 0 until data.size - 1) {
             val startX = padding + i * scaleX
             val startY = padding + height - data[i] * scaleY
@@ -76,7 +73,6 @@ class LineGraphView @JvmOverloads constructor(
     }
 
     private fun drawKey(canvas: Canvas, padding: Float) {
-        // Draw key for income and expenses
         paintText.color = textColor
         canvas.drawText("Key:", padding + 20, padding - 50, paintText)
 
@@ -95,6 +91,7 @@ class LineGraphView @JvmOverloads constructor(
             val expenseDiff = expenseData[i + 1] - expenseData[i]
 
             if ((incomeDiff < 0 && expenseDiff > 0) || (incomeDiff > 0 && expenseDiff < 0)) {
+                // Roughly mark intersection point (simple linear approximation)
                 val intersectionX = padding + i * (width / (incomeData.size - 1))
                 val intersectionY = padding + height - incomeData[i] * (height / 10000f)
 
