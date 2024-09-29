@@ -29,14 +29,12 @@ public class LoginTabFragment extends Fragment {
         orLoginWith = root.findViewById(R.id.lblOrLoginWith);
 
 
-
         email.setTranslationX(800);
         password.setTranslationX(800);
         forgotPass.setTranslationX(800);
         login.setTranslationX(800);
         loginBiometrics.setTranslationX(800);
         orLoginWith.setTranslationX(800);
-
 
 
         email.setAlpha(v);
